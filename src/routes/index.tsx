@@ -1,23 +1,161 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, BadgeCheck, Clock, MapPin, ShieldCheck, ThumbsUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
+import { CtaBand } from "@/components/site/CtaBand";
+import { BUSINESS, SERVICES, whatsappLink } from "@/lib/site";
+import hero from "@/assets/hero-tecnico.jpg";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Central de Serviços | Manutenção residencial em Recife" },
+      {
+        name: "description",
+        content:
+          "Elétrica, hidráulica, ar-condicionado, pintura, reformas e montagem de móveis em Recife e Região Metropolitana. Orçamento grátis pelo WhatsApp.",
+      },
+      { property: "og:title", content: "Central de Serviços | Manutenção residencial em Recife" },
+      {
+        property: "og:description",
+        content: "Profissionais de confiança para sua casa ou empresa. Orçamento grátis pelo WhatsApp.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+const STEPS = [
+  { n: "01", title: "Chame no WhatsApp", text: "Conte o que precisa e envie fotos, se puder." },
+  { n: "02", title: "Receba o orçamento", text: "Preço claro, sem surpresa e sem compromisso." },
+  { n: "03", title: "Serviço resolvido", text: "Agendamos e o profissional vai até você." },
+];
+
+const WHY = [
+  { icon: Clock, title: "Atendimento rápido", text: "Resposta ágil e agendamento no melhor horário para você." },
+  { icon: ShieldCheck, title: "Serviço garantido", text: "Trabalho bem feito, com garantia e materiais de qualidade." },
+  { icon: BadgeCheck, title: "Preço justo", text: "Orçamento transparente antes de começar qualquer serviço." },
+  { icon: ThumbsUp, title: "Tudo em um só lugar", text: "Um único contato para resolver toda a manutenção da casa." },
+];
+
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-hero text-primary-foreground">
+        <div className="absolute -left-40 top-10 size-[34rem] rounded-full border-[40px] border-highlight/20" />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-[1.1fr_1fr] md:py-24">
+          <div className="animate-rise">
+            <span className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-sm font-semibold">
+              <MapPin className="size-4 text-accent" />
+              {BUSINESS.region}
+            </span>
+            <h1 className="text-display mt-6 text-5xl md:text-7xl">
+              Sua casa em <span className="text-highlight">boas mãos</span>
+            </h1>
+            <p className="mt-6 max-w-lg text-lg text-primary-foreground/80">
+              Elétrica, hidráulica, ar-condicionado, pintura, reformas e montagem de móveis. Um só
+              contato para resolver tudo.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button asChild variant="whatsapp" size="xl">
+                <a href={whatsappLink("Olá! Gostaria de um orçamento.")} target="_blank" rel="noreferrer">
+                  <WhatsAppIcon className="size-5" />
+                  Pedir orçamento grátis
+                </a>
+              </Button>
+              <Button asChild variant="onDark" size="xl">
+                <Link to="/servicos">
+                  Ver serviços <ArrowRight />
+                </Link>
+              </Button>
+            </div>
+          </div>
+          <div className="relative animate-rise [animation-delay:150ms]">
+            <div className="absolute -inset-3 rotate-2 rounded-[2rem] bg-accent" />
+            <img
+              src={hero}
+              alt="Técnico da Central de Serviços instalando uma tomada"
+              className="relative aspect-[4/3] w-full rounded-[1.75rem] object-cover shadow-card"
+              width={1536}
+              height={1024}
+            />
+            <div className="absolute -bottom-6 left-6 rounded-2xl bg-card px-5 py-4 text-card-foreground shadow-card">
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Orçamento</p>
+              <p className="text-display text-2xl text-accent">Grátis</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="mx-auto max-w-6xl px-5 py-20">
+        <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div className="roof-mark">
+            <h2 className="text-display text-4xl text-primary md:text-5xl">Nossos serviços</h2>
+            <p className="mt-3 max-w-md text-muted-foreground">
+              Do pequeno conserto à reforma: profissionais preparados para cada tipo de trabalho.
+            </p>
+          </div>
+          <Link to="/servicos" className="inline-flex items-center gap-2 font-bold text-highlight hover:gap-3 transition-all">
+            Ver todos os detalhes <ArrowRight className="size-4" />
+          </Link>
+        </div>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map((s) => (
+            <Link
+              key={s.slug}
+              to="/servicos"
+              hash={s.slug}
+              className="group rounded-2xl border border-border bg-card p-7 shadow-card transition-all hover:-translate-y-1 hover:border-highlight"
+            >
+              <div className="grid size-14 place-items-center rounded-xl bg-secondary text-highlight transition-colors group-hover:bg-highlight group-hover:text-highlight-foreground">
+                <s.icon className="size-7" />
+              </div>
+              <h3 className="mt-5 text-xl font-extrabold text-primary">{s.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{s.short}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Why */}
+      <section className="bg-secondary/60 py-20">
+        <div className="mx-auto max-w-6xl px-5">
+          <div className="roof-mark">
+            <h2 className="text-display text-4xl text-primary md:text-5xl">Por que a Central?</h2>
+          </div>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {WHY.map((w) => (
+              <div key={w.title}>
+                <w.icon className="size-9 text-accent" />
+                <h3 className="mt-4 text-lg font-extrabold text-primary">{w.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{w.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Steps */}
+      <section className="mx-auto max-w-6xl px-5 py-20">
+        <div className="roof-mark">
+          <h2 className="text-display text-4xl text-primary md:text-5xl">Como funciona</h2>
+        </div>
+        <ol className="mt-10 grid gap-5 md:grid-cols-3">
+          {STEPS.map((s) => (
+            <li key={s.n} className="rounded-2xl bg-primary p-8 text-primary-foreground">
+              <span className="text-display text-5xl text-highlight">{s.n}</span>
+              <h3 className="mt-4 text-xl font-extrabold">{s.title}</h3>
+              <p className="mt-2 text-sm text-primary-foreground/75">{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <CtaBand />
+    </>
   );
 }
