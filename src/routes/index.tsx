@@ -3,7 +3,7 @@ import { ArrowRight, BadgeCheck, Clock, MapPin, ShieldCheck, ThumbsUp } from "lu
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { CtaBand } from "@/components/site/CtaBand";
-import { BUSINESS, SERVICES, whatsappLink } from "@/lib/site";
+import { BUSINESS, SEGMENTS, SEGMENTS_LABEL, SERVICES, whatsappLink } from "@/lib/site";
 import hero from "@/assets/hero-tecnico.jpg";
 
 export const Route = createFileRoute("/")({
@@ -13,12 +13,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Elétrica, hidráulica, ar-condicionado, pintura, reformas e montagem de móveis em Recife e Região Metropolitana. Peça seu orçamento pelo WhatsApp.",
+          "Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura, reformas e montagem de móveis em Recife e Região Metropolitana. Atendemos residências, empresas e condomínios. Peça seu orçamento pelo WhatsApp.",
       },
       { property: "og:title", content: "Central de Serviços | Manutenção residencial em Recife" },
       {
         property: "og:description",
-        content: "Profissionais de confiança para sua casa ou empresa. Peça seu orçamento pelo WhatsApp.",
+        content: "Profissionais de confiança para sua casa, empresa ou condomínio. Peça seu orçamento pelo WhatsApp.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -53,12 +53,23 @@ function Index() {
               {BUSINESS.region}
             </span>
             <h1 className="text-display mt-6 text-5xl md:text-7xl">
-              Sua casa em <span className="text-highlight">boas mãos</span>
+              Sua casa ou empresa <span className="text-highlight">em boas mãos</span>
             </h1>
             <p className="mt-6 max-w-lg text-lg text-primary-foreground/80">
-              Elétrica, hidráulica, ar-condicionado, pintura, reformas e montagem de móveis. Um só
-              contato para resolver tudo.
+              Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura, reformas e montagem de
+              móveis. Um só contato para resolver tudo.
             </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {SEGMENTS.map((s) => (
+                <span
+                  key={s.title}
+                  className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/25 px-4 py-1.5 text-sm font-semibold text-primary-foreground/85"
+                >
+                  <s.icon className="size-4 text-accent" />
+                  {s.title}
+                </span>
+              ))}
+            </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild variant="whatsapp" size="xl">
                 <a href={whatsappLink("Olá! Gostaria de um orçamento.")} target="_blank" rel="noreferrer">
@@ -149,6 +160,29 @@ function Index() {
             </li>
           ))}
         </ol>
+      </section>
+
+      {/* Quem atendemos */}
+      <section className="bg-secondary/60 py-20">
+        <div className="mx-auto max-w-6xl px-5">
+          <div className="roof-mark">
+            <h2 className="text-display text-4xl text-primary md:text-5xl">Quem atendemos</h2>
+            <p className="mt-3 max-w-md text-muted-foreground">
+              Serviço organizado para {SEGMENTS_LABEL}, com horário combinado antes de começar.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-5 sm:grid-cols-3">
+            {SEGMENTS.map((s) => (
+              <div key={s.title} className="rounded-2xl border border-border bg-card p-7 shadow-card">
+                <div className="grid size-14 place-items-center rounded-xl bg-secondary text-highlight">
+                  <s.icon className="size-7" />
+                </div>
+                <h3 className="mt-5 text-xl font-extrabold text-primary">{s.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <CtaBand />

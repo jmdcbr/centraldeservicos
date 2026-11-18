@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { HeartHandshake, MapPin, Sparkles, Wrench } from "lucide-react";
 import { CtaBand } from "@/components/site/CtaBand";
+import { SEGMENTS_LABEL } from "@/lib/site";
 import logo from "@/assets/logo-central-servicos.png.asset.json";
 
 export const Route = createFileRoute("/sobre")({
@@ -45,8 +46,9 @@ function SobrePage() {
             tem um só contato para resolver tudo.
           </p>
           <p className="mt-4 text-muted-foreground">
-            Elétrica, hidráulica, ar-condicionado, pintura, reformas e montagem de móveis — com
-            atendimento rápido, preço justo e serviço garantido.
+            Atendemos {SEGMENTS_LABEL} em Recife e Região Metropolitana: elétrica, hidráulica,
+            ar-condicionado, vidraçaria, pintura, reformas, montagem de móveis e pequenos reparos —
+            com atendimento rápido, preço justo e serviço garantido.
           </p>
         </div>
         <div className="rounded-3xl border border-border bg-card p-6 shadow-card">

@@ -12,12 +12,13 @@ export const Route = createFileRoute("/servicos")({
       {
         name: "description",
         content:
-          "Elétrica, hidráulica, ar-condicionado, pintura e reformas, montagem de móveis e pequenos reparos em Recife e Região Metropolitana.",
+          "Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura e reformas, montagem de móveis e pequenos reparos em Recife e Região Metropolitana.",
       },
       { property: "og:title", content: "Serviços | Central de Serviços Recife" },
       {
         property: "og:description",
-        content: "Conheça todos os serviços de manutenção residencial e comercial da Central de Serviços.",
+        content:
+          "Todos os serviços de manutenção da Central de Serviços para residências, empresas e condomínios.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

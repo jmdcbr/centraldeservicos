@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BUSINESS, whatsappLink } from "@/lib/site";
+import { BUSINESS, SEGMENTS, SERVICES, whatsappLink } from "@/lib/site";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -29,5 +29,22 @@ describe("Free-quote claim removed", () => {
   it("never says the quote is free anywhere on the site", () => {
     const offenders = siteSourceFiles().filter((f) => /gr[áa]tis/i.test(readFileSync(f, "utf8")));
     expect(offenders).toEqual([]);
+  });
+});
+
+describe("Service catalog", () => {
+  it("offers vidraçaria among the services", () => {
+    const vidracaria = SERVICES.find((s) => s.slug === "vidracaria");
+    expect(vidracaria?.title).toBe("Vidraçaria");
+    expect(vidracaria?.items).toContain("Box de banheiro");
+  });
+});
+
+describe("Clients served", () => {
+  it("lists empresas and condomínios as segments served", () => {
+    const titles = SEGMENTS.map((s) => s.title);
+    expect(titles).toContain("Empresas");
+    expect(titles).toContain("Condomínios");
+    expect(titles).toContain("Residências");
   });
 });

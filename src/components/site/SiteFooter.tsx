@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { MapPin } from "lucide-react";
-import { BUSINESS, SERVICES, whatsappLink } from "@/lib/site";
+import { BUSINESS, SEGMENTS_LABEL, SERVICES, whatsappLink } from "@/lib/site";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function SiteFooter() {
@@ -14,7 +14,7 @@ export function SiteFooter() {
             <span className="text-highlight">de Serviços</span>
           </p>
           <p className="mt-4 max-w-xs text-sm text-primary-foreground/70">
-            Manutenção residencial e comercial com profissionais de confiança.
+            Manutenção para {SEGMENTS_LABEL} com profissionais de confiança.
           </p>
         </div>
         <div>

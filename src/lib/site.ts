@@ -1,4 +1,16 @@
-import { Zap, Droplets, Snowflake, PaintRoller, Hammer, Wrench, type LucideIcon } from "lucide-react";
+import {
+  AppWindow,
+  Building2,
+  Droplets,
+  Hammer,
+  Home,
+  PaintRoller,
+  Snowflake,
+  Users,
+  Wrench,
+  Zap,
+  type LucideIcon,
+} from "lucide-react";
 
 export const BUSINESS = {
   name: "Central de Serviços",
@@ -14,6 +26,34 @@ export function whatsappLink(message?: string, number: string = BUSINESS.phones[
   const base = `https://wa.me/${number}`;
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
+
+export type Segment = {
+  title: string;
+  text: string;
+  icon: LucideIcon;
+};
+
+/** Quem a Central atende: residências, empresas e condomínios. */
+export const SEGMENTS: Segment[] = [
+  {
+    icon: Home,
+    title: "Residências",
+    text: "Apartamentos e casas, do conserto pontual à reforma completa.",
+  },
+  {
+    icon: Building2,
+    title: "Empresas",
+    text: "Escritórios, lojas e estabelecimentos, com horário agendado.",
+  },
+  {
+    icon: Users,
+    title: "Condomínios",
+    text: "Áreas comuns, garagens e unidades, com serviço programado.",
+  },
+];
+
+/** Sentence-ready label for copy: "residências, empresas e condomínios". */
+export const SEGMENTS_LABEL = "residências, empresas e condomínios";
 
 export type Service = {
   slug: string;
@@ -44,6 +84,13 @@ export const SERVICES: Service[] = [
     short: "Instalação, limpeza e manutenção para o seu ar gelar de verdade.",
     icon: Snowflake,
     items: ["Instalação de split", "Limpeza e higienização", "Recarga de gás", "Manutenção preventiva", "Desinstalação e mudança"],
+  },
+  {
+    slug: "vidracaria",
+    title: "Vidraçaria",
+    short: "Vidros, boxes e espelhos com instalação e troca feitas com segurança.",
+    icon: AppWindow,
+    items: ["Box de banheiro", "Vidros de janelas e portas", "Espelhos e bisotês", "Divisórias e vitrines", "Troca de vidros quebrados"],
   },
   {
     slug: "pintura-reformas",

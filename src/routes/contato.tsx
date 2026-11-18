@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { BUSINESS, SERVICES, whatsappLink } from "@/lib/site";
+import { BUSINESS, SEGMENTS, SERVICES, whatsappLink } from "@/lib/site";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
@@ -81,6 +81,22 @@ function ContatoPage() {
               <span className="block text-xs font-semibold uppercase tracking-widest text-muted-foreground">Atendemos</span>
               <span className="text-lg font-extrabold text-primary">{BUSINESS.region}</span>
             </span>
+          </div>
+          <div className="rounded-2xl border border-border bg-card p-5">
+            <span className="block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              Para quem
+            </span>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {SEGMENTS.map((s) => (
+                <span
+                  key={s.title}
+                  className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1.5 text-sm font-semibold text-primary"
+                >
+                  <s.icon className="size-4 text-accent" />
+                  {s.title}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
