@@ -1,9 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Check } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { CtaBand } from "@/components/site/CtaBand";
-import { SERVICES, whatsappLink } from "@/lib/site";
+import { PRODUCTS, PROMO, SERVICES, whatsappLink } from "@/lib/site";
 
 export const Route = createFileRoute("/servicos")({
   head: () => ({
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/servicos")({
       {
         name: "description",
         content:
-          "Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura e reformas, montagem de móveis e pequenos reparos em Recife e Região Metropolitana.",
+          "Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura e reformas, montagem de móveis e pequenos reparos em Recife e RMR. Também vendemos ar-condicionado, linhas Oi e TIM e seguro auto APVS.",
       },
       { property: "og:title", content: "Serviços | Central de Serviços Recife" },
       {
@@ -77,6 +77,58 @@ function ServicosPage() {
             </Button>
           </article>
         ))}
+      </section>
+
+      <section className="bg-secondary/60 py-16">
+        <div className="mx-auto max-w-6xl px-5">
+          <div className="roof-mark">
+            <h2 className="text-display text-4xl text-primary md:text-5xl">Também vendemos</h2>
+            <p className="mt-3 max-w-md text-muted-foreground">
+              Além da manutenção, cuidamos de outras necessidades da sua casa, empresa e do seu carro.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {PRODUCTS.map((p) => (
+              <article
+                key={p.slug}
+                id={p.slug}
+                className="flex scroll-mt-28 flex-col rounded-3xl border border-border bg-card p-8 shadow-card"
+              >
+                <div className="grid size-14 place-items-center rounded-2xl bg-accent text-accent-foreground">
+                  <p.icon className="size-7" />
+                </div>
+                <h3 className="mt-5 text-xl font-extrabold text-primary">{p.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{p.short}</p>
+                <ul className="mt-5 flex-1 space-y-2">
+                  {p.items.map((i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm font-medium">
+                      <Check className="mt-0.5 size-4 shrink-0 text-accent" />
+                      {i}
+                    </li>
+                  ))}
+                </ul>
+                {p.slug === "venda-ar-condicionado" ? (
+                  <Button asChild variant="hero" className="mt-6 rounded-full">
+                    <Link to="/black-friday">
+                      Ver {PROMO.name} <ArrowRight />
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button asChild variant="whatsapp" className="mt-6 rounded-full">
+                    <a
+                      href={whatsappLink(`Olá! Tenho interesse em ${p.title}.`)}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <WhatsAppIcon className="size-4" />
+                      Quero saber mais
+                    </a>
+                  </Button>
+                )}
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       <CtaBand title="Não achou o que precisa?" />

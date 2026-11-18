@@ -14,4 +14,9 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+
+  it("has a Black Friday promo page", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    expect(router.matchRoutes("/black-friday").at(-1)?.routeId).toBe("/black-friday");
+  });
 });

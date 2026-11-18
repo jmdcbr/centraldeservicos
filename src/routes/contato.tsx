@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { BUSINESS, SEGMENTS, SERVICES, whatsappLink } from "@/lib/site";
+import { BUSINESS, PRODUCTS, SEGMENTS, SERVICES, whatsappLink } from "@/lib/site";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
@@ -37,7 +37,7 @@ function ContatoPage() {
     const detalhes = String(data.get("detalhes") ?? "").trim();
     const msg = [
       `Olá! Meu nome é ${nome}.`,
-      `Gostaria de um orçamento de: ${service}.`,
+      `Tenho interesse em: ${service}.`,
       bairro && `Bairro/cidade: ${bairro}.`,
       detalhes && `Detalhes: ${detalhes}`,
     ]
@@ -110,7 +110,7 @@ function ContatoPage() {
         <div className="space-y-2">
           <Label>Serviço</Label>
           <div className="flex flex-wrap gap-2">
-            {SERVICES.map((s) => (
+            {[...SERVICES, ...PRODUCTS].map((s) => (
               <button
                 key={s.slug}
                 type="button"

@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BadgeCheck, Clock, MapPin, ShieldCheck, ThumbsUp } from "lucide-react";
+import { ArrowRight, BadgeCheck, Clock, MapPin, ShieldCheck, Snowflake, ThumbsUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { CtaBand } from "@/components/site/CtaBand";
-import { BUSINESS, SEGMENTS, SEGMENTS_LABEL, SERVICES, whatsappLink } from "@/lib/site";
+import { BUSINESS, PRODUCTS, PROMO, SEGMENTS, SEGMENTS_LABEL, SERVICES, whatsappLink } from "@/lib/site";
 import hero from "@/assets/hero-tecnico.jpg";
 
 export const Route = createFileRoute("/")({
@@ -97,6 +97,32 @@ function Index() {
         </div>
       </section>
 
+      {/* Black Friday */}
+      <section className="px-5 pt-12">
+        <Link
+          to="/black-friday"
+          className="group relative mx-auto flex max-w-6xl flex-col items-start justify-between gap-5 overflow-hidden rounded-3xl bg-navy-deep px-8 py-8 text-primary-foreground shadow-card md:flex-row md:items-center md:px-12"
+        >
+          <div className="absolute -right-10 -top-16 size-56 rounded-full border-[28px] border-accent/30" />
+          <div className="relative flex items-center gap-5">
+            <div className="grid size-16 shrink-0 place-items-center rounded-2xl bg-accent text-accent-foreground">
+              <Snowflake className="size-8" />
+            </div>
+            <div>
+              <p className="text-display text-3xl md:text-4xl">
+                Black <span className="text-accent">Friday</span> de ar-condicionado
+              </p>
+              <p className="mt-1 text-primary-foreground/80">
+                Aparelhos Split Inverter com instalação · {PROMO.endsLabel}
+              </p>
+            </div>
+          </div>
+          <span className="relative inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-extrabold text-accent-foreground transition-all group-hover:gap-3">
+            Ver ofertas <ArrowRight className="size-4" />
+          </span>
+        </Link>
+      </section>
+
       {/* Services */}
       <section className="mx-auto max-w-6xl px-5 py-20">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
@@ -123,6 +149,32 @@ function Index() {
               </div>
               <h3 className="mt-5 text-xl font-extrabold text-primary">{s.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.short}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Também vendemos */}
+      <section className="mx-auto max-w-6xl px-5 pb-20">
+        <div className="roof-mark">
+          <h2 className="text-display text-4xl text-primary md:text-5xl">Também vendemos</h2>
+        </div>
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {PRODUCTS.map((p) => (
+            <Link
+              key={p.slug}
+              {...(p.slug === "venda-ar-condicionado"
+                ? { to: "/black-friday" as const }
+                : { to: "/servicos" as const, hash: p.slug })}
+              className="group flex items-start gap-5 rounded-2xl border border-border bg-card p-7 shadow-card transition-all hover:-translate-y-1 hover:border-accent"
+            >
+              <div className="grid size-14 shrink-0 place-items-center rounded-xl bg-accent text-accent-foreground">
+                <p.icon className="size-7" />
+              </div>
+              <div>
+                <h3 className="text-lg font-extrabold text-primary">{p.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{p.short}</p>
+              </div>
             </Link>
           ))}
         </div>

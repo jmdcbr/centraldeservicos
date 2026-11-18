@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlackFridayRouteImport } from './routes/black-friday'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as SobreRouteImport } from './routes/sobre'
@@ -17,6 +18,11 @@ import { Route as SobreRouteImport } from './routes/sobre'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlackFridayRoute = BlackFridayRouteImport.update({
+  id: '/black-friday',
+  path: '/black-friday',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContatoRoute = ContatoRouteImport.update({
@@ -37,12 +43,14 @@ const SobreRoute = SobreRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/black-friday': typeof BlackFridayRoute
   '/contato': typeof ContatoRoute
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/black-friday': typeof BlackFridayRoute
   '/contato': typeof ContatoRoute
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/black-friday': typeof BlackFridayRoute
   '/contato': typeof ContatoRoute
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contato' | '/servicos' | '/sobre'
+  fullPaths: '/' | '/black-friday' | '/contato' | '/servicos' | '/sobre'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contato' | '/servicos' | '/sobre'
-  id: '__root__' | '/' | '/contato' | '/servicos' | '/sobre'
+  to: '/' | '/black-friday' | '/contato' | '/servicos' | '/sobre'
+  id: '__root__' | '/' | '/black-friday' | '/contato' | '/servicos' | '/sobre'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlackFridayRoute: typeof BlackFridayRoute
   ContatoRoute: typeof ContatoRoute
   ServicosRoute: typeof ServicosRoute
   SobreRoute: typeof SobreRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/black-friday': {
+      id: '/black-friday'
+      path: '/black-friday'
+      fullPath: '/black-friday'
+      preLoaderRoute: typeof BlackFridayRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contato': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlackFridayRoute: BlackFridayRoute,
   ContatoRoute: ContatoRoute,
   ServicosRoute: ServicosRoute,
   SobreRoute: SobreRoute,

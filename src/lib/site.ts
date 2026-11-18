@@ -1,10 +1,13 @@
 import {
   AppWindow,
   Building2,
+  Car,
   Droplets,
   Hammer,
   Home,
   PaintRoller,
+  ShoppingBag,
+  Smartphone,
   Snowflake,
   Users,
   Wrench,
@@ -112,5 +115,74 @@ export const SERVICES: Service[] = [
     short: "Aquele conserto que está esperando há meses — a gente resolve.",
     icon: Wrench,
     items: ["Prateleiras e quadros", "Cortinas e persianas", "Portas e fechaduras", "Suportes de TV", "Ajustes em geral"],
+  },
+];
+
+/** Black Friday: venda de aparelhos de ar-condicionado. */
+export const PROMO = {
+  name: "Black Friday",
+  endsLabel: "até 30 de novembro",
+} as const;
+
+export type AcOffer = {
+  model: string;
+  btus: string;
+  idealFor: string;
+  highlights: string[];
+  /** Price text; undefined shows "Consulte o preço". */
+  price?: string;
+  tag?: string;
+};
+
+export const AC_OFFERS: AcOffer[] = [
+  {
+    model: "Split Inverter",
+    btus: "9.000 BTUs",
+    idealFor: "Quartos até 12 m²",
+    highlights: ["Econômico na conta de luz", "Silencioso para dormir", "Controle remoto"],
+  },
+  {
+    model: "Split Inverter",
+    btus: "12.000 BTUs",
+    idealFor: "Quartos e salas até 18 m²",
+    highlights: ["Econômico na conta de luz", "Gela rápido", "Controle remoto"],
+    tag: "Mais procurado",
+  },
+  {
+    model: "Split Inverter",
+    btus: "18.000 BTUs",
+    idealFor: "Salas e escritórios até 28 m²",
+    highlights: ["Ideal para ambientes maiores", "Baixo ruído", "Modo turbo"],
+  },
+  {
+    model: "Split Inverter",
+    btus: "24.000 BTUs",
+    idealFor: "Lojas e salas até 38 m²",
+    highlights: ["Para empresas e comércio", "Alta potência", "Modo turbo"],
+  },
+];
+
+/** Produtos que a Central vende além dos serviços de manutenção. */
+export const PRODUCTS: Service[] = [
+  {
+    slug: "venda-ar-condicionado",
+    title: "Venda de ar-condicionado",
+    short: "Aparelhos novos com instalação feita pela nossa equipe. Confira a Black Friday!",
+    icon: ShoppingBag,
+    items: ["Split Inverter de 9.000 a 24.000 BTUs", "Para casas, empresas e condomínios", "Instalação com a nossa equipe", "Ajuda para escolher o modelo"],
+  },
+  {
+    slug: "linhas-telefonicas",
+    title: "Linhas telefônicas Oi e TIM",
+    short: "Linhas e planos Oi e TIM para você, sua família ou sua empresa.",
+    icon: Smartphone,
+    items: ["Linhas Oi e TIM", "Planos pré e pós-pago", "Planos para empresas", "Portabilidade do seu número"],
+  },
+  {
+    slug: "seguro-automotivo-apvs",
+    title: "Seguro automotivo APVS",
+    short: "Proteção veicular APVS para o seu carro, moto ou utilitário.",
+    icon: Car,
+    items: ["Proteção contra roubo e furto", "Colisão e perda total", "Assistência 24 horas", "Carros, motos e utilitários"],
   },
 ];

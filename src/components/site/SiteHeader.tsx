@@ -9,6 +9,7 @@ import logo from "@/assets/logo-marca.png.asset.json";
 const NAV = [
   { to: "/", label: "Início" },
   { to: "/servicos", label: "Serviços" },
+  { to: "/black-friday", label: "Black Friday" },
   { to: "/sobre", label: "Sobre" },
   { to: "/contato", label: "Contato" },
 ] as const;
@@ -27,8 +28,12 @@ export function SiteHeader() {
             <Link
               key={n.to}
               to={n.to}
-              className="rounded-full px-4 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-primary"
-              activeProps={{ className: "text-primary bg-secondary" }}
+              className={
+                n.to === "/black-friday"
+                  ? "rounded-full bg-accent px-4 py-2 text-sm font-extrabold text-accent-foreground transition-opacity hover:opacity-90"
+                  : "rounded-full px-4 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-primary"
+              }
+              activeProps={n.to === "/black-friday" ? {} : { className: "text-primary bg-secondary" }}
               activeOptions={{ exact: true }}
             >
               {n.label}
@@ -61,7 +66,11 @@ export function SiteHeader() {
               key={n.to}
               to={n.to}
               onClick={() => setOpen(false)}
-              className="block border-b border-border/60 py-3 font-semibold text-foreground"
+              className={
+                n.to === "/black-friday"
+                  ? "block border-b border-border/60 py-3 font-extrabold text-accent"
+                  : "block border-b border-border/60 py-3 font-semibold text-foreground"
+              }
               activeProps={{ className: "text-highlight" }}
               activeOptions={{ exact: true }}
             >

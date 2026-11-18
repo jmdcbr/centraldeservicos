@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BUSINESS, SEGMENTS, SERVICES, whatsappLink } from "@/lib/site";
+import { AC_OFFERS, BUSINESS, PRODUCTS, PROMO, SEGMENTS, SERVICES, whatsappLink } from "@/lib/site";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -46,5 +46,23 @@ describe("Clients served", () => {
     expect(titles).toContain("Empresas");
     expect(titles).toContain("Condomínios");
     expect(titles).toContain("Residências");
+  });
+});
+
+describe("Products sold", () => {
+  it("sells Oi and TIM phone lines", () => {
+    const lines = PRODUCTS.find((p) => p.slug === "linhas-telefonicas");
+    expect(lines?.title).toContain("Oi");
+    expect(lines?.title).toContain("TIM");
+  });
+
+  it("sells APVS car insurance", () => {
+    expect(PRODUCTS.find((p) => p.slug === "seguro-automotivo-apvs")?.title).toBe("Seguro automotivo APVS");
+  });
+
+  it("sells air conditioners with Black Friday offers", () => {
+    expect(PRODUCTS.some((p) => p.slug === "venda-ar-condicionado")).toBe(true);
+    expect(PROMO.name).toBe("Black Friday");
+    expect(AC_OFFERS.length).toBeGreaterThan(0);
   });
 });

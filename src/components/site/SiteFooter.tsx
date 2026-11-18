@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { MapPin } from "lucide-react";
-import { BUSINESS, SEGMENTS_LABEL, SERVICES, whatsappLink } from "@/lib/site";
+import { BUSINESS, PRODUCTS, SEGMENTS_LABEL, SERVICES, whatsappLink } from "@/lib/site";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function SiteFooter() {
@@ -24,6 +24,21 @@ export function SiteFooter() {
               <li key={s.slug}>
                 <Link to="/servicos" hash={s.slug} className="text-primary-foreground/85 hover:text-primary-foreground">
                   {s.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <h3 className="mt-8 text-sm font-bold uppercase tracking-widest text-primary-foreground/60">Também vendemos</h3>
+          <ul className="mt-4 space-y-2 text-sm">
+            <li>
+              <Link to="/black-friday" className="font-bold text-accent hover:text-primary-foreground">
+                Black Friday de ar-condicionado
+              </Link>
+            </li>
+            {PRODUCTS.slice(1).map((p) => (
+              <li key={p.slug}>
+                <Link to="/servicos" hash={p.slug} className="text-primary-foreground/85 hover:text-primary-foreground">
+                  {p.title}
                 </Link>
               </li>
             ))}
