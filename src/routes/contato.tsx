@@ -15,10 +15,10 @@ export const Route = createFileRoute("/contato")({
       {
         name: "description",
         content:
-          "Peça seu orçamento grátis pelo WhatsApp: (81) 98297-7770 ou (81) 98516-3998. Atendimento em Recife e Região Metropolitana.",
+          "Peça seu orçamento pelo WhatsApp: (81) 98297-7770 ou (81) 98516-3998. Atendimento em Recife e Região Metropolitana.",
       },
       { property: "og:title", content: "Contato | Central de Serviços" },
-      { property: "og:description", content: "Peça seu orçamento grátis pelo WhatsApp." },
+      { property: "og:description", content: "Peça seu orçamento pelo WhatsApp." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

@@ -40,7 +40,7 @@ export function SiteHeader() {
           <Button asChild variant="whatsapp" className="hidden rounded-full sm:inline-flex">
             <a href={whatsappLink("Olá! Gostaria de um orçamento.")} target="_blank" rel="noreferrer">
               <WhatsAppIcon className="size-4" />
-              Orçamento grátis
+              Orçamento
             </a>
           </Button>
           <button

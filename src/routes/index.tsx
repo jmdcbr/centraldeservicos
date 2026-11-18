@@ -13,12 +13,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Elétrica, hidráulica, ar-condicionado, pintura, reformas e montagem de móveis em Recife e Região Metropolitana. Orçamento grátis pelo WhatsApp.",
+          "Elétrica, hidráulica, ar-condicionado, pintura, reformas e montagem de móveis em Recife e Região Metropolitana. Peça seu orçamento pelo WhatsApp.",
       },
       { property: "og:title", content: "Central de Serviços | Manutenção residencial em Recife" },
       {
         property: "og:description",
-        content: "Profissionais de confiança para sua casa ou empresa. Orçamento grátis pelo WhatsApp.",
+        content: "Profissionais de confiança para sua casa ou empresa. Peça seu orçamento pelo WhatsApp.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -63,7 +63,7 @@ function Index() {
               <Button asChild variant="whatsapp" size="xl">
                 <a href={whatsappLink("Olá! Gostaria de um orçamento.")} target="_blank" rel="noreferrer">
                   <WhatsAppIcon className="size-5" />
-                  Pedir orçamento grátis
+                  Pedir orçamento
                 </a>
               </Button>
               <Button asChild variant="onDark" size="xl">
@@ -82,10 +82,6 @@ function Index() {
               width={1536}
               height={1024}
             />
-            <div className="absolute -bottom-6 left-6 rounded-2xl bg-card px-5 py-4 text-card-foreground shadow-card">
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Orçamento</p>
-              <p className="text-display text-2xl text-accent">Grátis</p>
-            </div>
           </div>
         </div>
       </section>
