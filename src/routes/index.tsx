@@ -3,7 +3,7 @@ import { ArrowRight, BadgeCheck, Clock, MapPin, ShieldCheck, Snowflake, ThumbsUp
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { CtaBand } from "@/components/site/CtaBand";
-import { BUSINESS, PRODUCTS, PROMO, SEGMENTS, SEGMENTS_LABEL, SERVICES, whatsappLink } from "@/lib/site";
+import { BUSINESS, PRODUCTS, SEGMENTS, SEGMENTS_LABEL, SERVICES, whatsappLink } from "@/lib/site";
 import hero from "@/assets/hero-tecnico.jpg";
 
 export const Route = createFileRoute("/")({
@@ -113,7 +113,7 @@ function Index() {
                 Black <span className="text-accent">Friday</span> de ar-condicionado
               </p>
               <p className="mt-1 text-primary-foreground/80">
-                Aparelhos Split Inverter com instalação · {PROMO.endsLabel}
+                Aparelhos Elgin, Philco e Midea com preços à vista e no cartão
               </p>
             </div>
           </div>

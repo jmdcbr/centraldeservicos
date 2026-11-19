@@ -60,9 +60,102 @@ describe("Products sold", () => {
     expect(PRODUCTS.find((p) => p.slug === "seguro-automotivo-apvs")?.title).toBe("Seguro automotivo APVS");
   });
 
-  it("sells air conditioners with Black Friday offers", () => {
+  it("sells air conditioners with eight Black Friday offers", () => {
     expect(PRODUCTS.some((p) => p.slug === "venda-ar-condicionado")).toBe(true);
     expect(PROMO.name).toBe("Black Friday");
-    expect(AC_OFFERS.length).toBeGreaterThan(0);
+    expect(AC_OFFERS).toHaveLength(8);
+  });
+});
+
+describe("Black Friday offer prices", () => {
+  it.each([
+    {
+      brand: "Elgin",
+      model: "Split Eco Inverter III Wi-Fi",
+      code: "HJFC18C2WHCH",
+      btus: "18.000 BTUs",
+      cycle: "Frio",
+      cashPrice: "R$ 2.599,01",
+      cardPrice: "R$ 2.953,41",
+      installments: "10x de R$ 295,34",
+    },
+    {
+      brand: "Philco",
+      model: "Split Inverter com Wi-Fi",
+      code: "PAC18FTW",
+      btus: "18.000 BTUs",
+      cycle: "Frio",
+      cashPrice: "R$ 2.099,00",
+      cardPrice: "R$ 2.612,50",
+      installments: "10x de R$ 261,25",
+    },
+    {
+      brand: "Elgin",
+      model: "Split Eco Inverter III Wi-Fi",
+      code: "HJQE12C2CH",
+      btus: "12.000 BTUs",
+      cycle: "Quente e Frio",
+      cashPrice: "R$ 1.949,01",
+      installments: "10x de R$ 2.228,41",
+      installmentNote: "Valor impresso na arte da promoção.",
+    },
+    {
+      brand: "Midea",
+      model: "Split Teto Connect Inverter",
+      code: "38CCVE36515MM",
+      btus: "36.000 BTUs",
+      cycle: "Frio",
+      cashPrice: "R$ 7.478,87",
+      cardPrice: "R$ 8.498,71",
+      installments: "10x de R$ 849,87",
+    },
+    {
+      brand: "Elgin",
+      model: "Split Piso Teto Inverter Wi-Fi",
+      code: "PXFE60C2CC",
+      btus: "56.000 BTUs",
+      cycle: "Frio",
+      cashPrice: "R$ 8.899,00",
+      cardPrice: "R$ 10.112,50",
+      installments: "10x de R$ 1.011,25",
+    },
+    {
+      brand: "Elgin",
+      model: "Split Cassete 1 Via One Air Inverter",
+      code: "KOQE12C2CA",
+      btus: "12.000 BTUs",
+      cycle: "Quente e Frio",
+      cashPrice: "R$ 3.399,00",
+      cardPrice: "R$ 3.862,50",
+      installments: "10x de R$ 386,25",
+    },
+    {
+      brand: "Elgin",
+      model: "Split Eco Inverter II Wi-Fi",
+      code: "HJFE24C2CC",
+      btus: "24.000 BTUs",
+      cycle: "Frio",
+      cashPrice: "R$ 3.515,53",
+      cardPrice: "R$ 3.994,92",
+      installments: "10x de R$ 399,49",
+    },
+    {
+      brand: "Elgin",
+      model: "Split Eco Inverter II Wi-Fi",
+      code: "HJQE24C2CC",
+      btus: "24.000 BTUs",
+      cycle: "Quente e Frio",
+      cashPrice: "R$ 4.149,00",
+      cardPrice: "R$ 4.714,77",
+      installments: "10x de R$ 471,48",
+    },
+  ])("keeps the exact details and prices for $code", (expected) => {
+    expect(AC_OFFERS.find((offer) => offer.code === expected.code)).toMatchObject(expected);
+  });
+
+  it("does not invent an end date for the promotion", () => {
+    expect(PROMO).toEqual({ name: "Black Friday" });
+    const offenders = siteSourceFiles().filter((file) => readFileSync(file, "utf8").includes("30 de novembro"));
+    expect(offenders).toEqual([]);
   });
 });
