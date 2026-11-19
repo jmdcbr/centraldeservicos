@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Banknote, CreditCard, Snowflake, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
-import { AC_OFFERS, BUSINESS, PROMO, whatsappLink } from "@/lib/site";
+import { AC_OFFERS, BUSINESS, PARTNERS, PROMO, whatsappLink } from "@/lib/site";
 
 export const Route = createFileRoute("/black-friday")({
   head: () => ({
@@ -47,6 +47,16 @@ function BlackFridayPage() {
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/25 px-4 py-1.5">
               <Wrench className="size-4 text-accent" /> Instalação com a nossa equipe
+            </span>
+          </div>
+          <div className="mt-8 inline-flex items-center gap-4 rounded-2xl bg-primary-foreground/10 p-3 pr-5">
+            <img
+              src={PARTNERS.hiperfrio.logo}
+              alt={`Logo ${PARTNERS.hiperfrio.name}`}
+              className="h-12 w-auto max-w-[16rem] rounded-lg object-contain"
+            />
+            <span className="text-sm font-semibold text-primary-foreground/85">
+              Venda em parceria com a {PARTNERS.hiperfrio.name}
             </span>
           </div>
         </div>

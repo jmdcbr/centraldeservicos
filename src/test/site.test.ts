@@ -50,10 +50,21 @@ describe("Clients served", () => {
 });
 
 describe("Products sold", () => {
-  it("sells Oi and TIM phone lines", () => {
+  it("sells Claro and TIM phone lines", () => {
     const lines = PRODUCTS.find((p) => p.slug === "linhas-telefonicas");
-    expect(lines?.title).toContain("Oi");
-    expect(lines?.title).toContain("TIM");
+    expect(lines?.title).toBe("Linhas telefônicas Claro e TIM");
+    expect(lines?.partner?.name).toBe("Claro e TIM");
+  });
+
+  it("sells digital creatives and web development with Frame Division", () => {
+    const web = PRODUCTS.find((p) => p.slug === "criativos-desenvolvimento-web");
+    expect(web?.title).toBe("Criativos digitais e desenvolvimento web");
+    expect(web?.partner?.name).toBe("Frame Division");
+  });
+
+  it("credits APVS for car insurance and Hiperfrio for air-conditioner sales", () => {
+    expect(PRODUCTS.find((p) => p.slug === "seguro-automotivo-apvs")?.partner?.name).toBe("APVS");
+    expect(PRODUCTS.find((p) => p.slug === "venda-ar-condicionado")?.partner?.name).toBe("Hiperfrio");
   });
 
   it("sells APVS car insurance", () => {

@@ -5,6 +5,7 @@ import {
   Droplets,
   Hammer,
   Home,
+  MonitorSmartphone,
   PaintRoller,
   ShoppingBag,
   Smartphone,
@@ -14,6 +15,10 @@ import {
   Zap,
   type LucideIcon,
 } from "lucide-react";
+import apvsLogo from "@/assets/parceiro-apvs.png.asset.json";
+import timClaroLogo from "@/assets/parceiro-tim-claro.jpg.asset.json";
+import hiperfrioLogo from "@/assets/parceiro-hiperfrio.png.asset.json";
+import frameDivisionLogo from "@/assets/parceiro-frame-division.png.asset.json";
 
 export const BUSINESS = {
   name: "Central de Serviços",
@@ -58,12 +63,26 @@ export const SEGMENTS: Segment[] = [
 /** Sentence-ready label for copy: "residências, empresas e condomínios". */
 export const SEGMENTS_LABEL = "residências, empresas e condomínios";
 
+export type Partner = {
+  name: string;
+  logo: string;
+};
+
+/** Empresas parceiras por trás de cada produto vendido. */
+export const PARTNERS = {
+  hiperfrio: { name: "Hiperfrio", logo: hiperfrioLogo.url },
+  claroTim: { name: "Claro e TIM", logo: timClaroLogo.url },
+  apvs: { name: "APVS", logo: apvsLogo.url },
+  frameDivision: { name: "Frame Division", logo: frameDivisionLogo.url },
+} satisfies Record<string, Partner>;
+
 export type Service = {
   slug: string;
   title: string;
   short: string;
   icon: LucideIcon;
   items: string[];
+  partner?: Partner;
 };
 
 export const SERVICES: Service[] = [
@@ -226,13 +245,15 @@ export const PRODUCTS: Service[] = [
     short: "Aparelhos novos com instalação feita pela nossa equipe. Confira a Black Friday!",
     icon: ShoppingBag,
     items: ["Split Inverter de 9.000 a 24.000 BTUs", "Para casas, empresas e condomínios", "Instalação com a nossa equipe", "Ajuda para escolher o modelo"],
+    partner: PARTNERS.hiperfrio,
   },
   {
     slug: "linhas-telefonicas",
-    title: "Linhas telefônicas Oi e TIM",
-    short: "Linhas e planos Oi e TIM para você, sua família ou sua empresa.",
+    title: "Linhas telefônicas Claro e TIM",
+    short: "Linhas e planos Claro e TIM para você, sua família ou sua empresa.",
     icon: Smartphone,
-    items: ["Linhas Oi e TIM", "Planos pré e pós-pago", "Planos para empresas", "Portabilidade do seu número"],
+    items: ["Linhas Claro e TIM", "Planos pré e pós-pago", "Planos para empresas", "Portabilidade do seu número"],
+    partner: PARTNERS.claroTim,
   },
   {
     slug: "seguro-automotivo-apvs",
@@ -240,5 +261,14 @@ export const PRODUCTS: Service[] = [
     short: "Proteção veicular APVS para o seu carro, moto ou utilitário.",
     icon: Car,
     items: ["Proteção contra roubo e furto", "Colisão e perda total", "Assistência 24 horas", "Carros, motos e utilitários"],
+    partner: PARTNERS.apvs,
+  },
+  {
+    slug: "criativos-desenvolvimento-web",
+    title: "Criativos digitais e desenvolvimento web",
+    short: "Artes para divulgar o seu negócio e sites profissionais, com a Frame Division.",
+    icon: MonitorSmartphone,
+    items: ["Criativos para redes sociais", "Artes para anúncios", "Criação de sites", "Presença online para empresas"],
+    partner: PARTNERS.frameDivision,
   },
 ];

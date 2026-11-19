@@ -3,6 +3,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { CtaBand } from "@/components/site/CtaBand";
+import { PartnerBadge } from "@/components/site/PartnerBadge";
 import { PRODUCTS, PROMO, SERVICES, whatsappLink } from "@/lib/site";
 
 export const Route = createFileRoute("/servicos")({
@@ -12,7 +13,7 @@ export const Route = createFileRoute("/servicos")({
       {
         name: "description",
         content:
-          "Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura e reformas, montagem de móveis e pequenos reparos em Recife e RMR. Também vendemos ar-condicionado, linhas Oi e TIM e seguro auto APVS.",
+          "Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura e reformas, montagem de móveis e pequenos reparos em Recife e RMR. Também vendemos ar-condicionado Hiperfrio, linhas Claro e TIM, seguro auto APVS e criativos digitais e sites com a Frame Division.",
       },
       { property: "og:title", content: "Serviços | Central de Serviços Recife" },
       {
@@ -84,19 +85,23 @@ function ServicosPage() {
           <div className="roof-mark">
             <h2 className="text-display text-4xl text-primary md:text-5xl">Também vendemos</h2>
             <p className="mt-3 max-w-md text-muted-foreground">
-              Além da manutenção, cuidamos de outras necessidades da sua casa, empresa e do seu carro.
+              Além da manutenção, trabalhamos com parceiros de confiança para cuidar da sua casa, empresa, carro e da divulgação do seu negócio.
             </p>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {PRODUCTS.map((p) => (
               <article
                 key={p.slug}
                 id={p.slug}
                 className="flex scroll-mt-28 flex-col rounded-3xl border border-border bg-card p-8 shadow-card"
               >
-                <div className="grid size-14 place-items-center rounded-2xl bg-accent text-accent-foreground">
-                  <p.icon className="size-7" />
-                </div>
+                {p.partner ? (
+                  <PartnerBadge partner={p.partner} />
+                ) : (
+                  <div className="grid size-14 place-items-center rounded-2xl bg-accent text-accent-foreground">
+                    <p.icon className="size-7" />
+                  </div>
+                )}
                 <h3 className="mt-5 text-xl font-extrabold text-primary">{p.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{p.short}</p>
                 <ul className="mt-5 flex-1 space-y-2">

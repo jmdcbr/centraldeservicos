@@ -3,6 +3,7 @@ import { ArrowRight, BadgeCheck, Clock, MapPin, ShieldCheck, Snowflake, ThumbsUp
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { CtaBand } from "@/components/site/CtaBand";
+import { PartnerBadge } from "@/components/site/PartnerBadge";
 import { BUSINESS, PRODUCTS, SEGMENTS, SEGMENTS_LABEL, SERVICES, whatsappLink } from "@/lib/site";
 import hero from "@/assets/hero-tecnico.jpg";
 
@@ -159,22 +160,18 @@ function Index() {
         <div className="roof-mark">
           <h2 className="text-display text-4xl text-primary md:text-5xl">Também vendemos</h2>
         </div>
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {PRODUCTS.map((p) => (
             <Link
               key={p.slug}
               {...(p.slug === "venda-ar-condicionado"
                 ? { to: "/black-friday" as const }
                 : { to: "/servicos" as const, hash: p.slug })}
-              className="group flex items-start gap-5 rounded-2xl border border-border bg-card p-7 shadow-card transition-all hover:-translate-y-1 hover:border-accent"
+              className="group flex flex-col rounded-2xl border border-border bg-card p-7 shadow-card transition-all hover:-translate-y-1 hover:border-accent"
             >
-              <div className="grid size-14 shrink-0 place-items-center rounded-xl bg-accent text-accent-foreground">
-                <p.icon className="size-7" />
-              </div>
-              <div>
-                <h3 className="text-lg font-extrabold text-primary">{p.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{p.short}</p>
-              </div>
+              {p.partner && <PartnerBadge partner={p.partner} />}
+              <h3 className="mt-5 text-lg font-extrabold text-primary">{p.title}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{p.short}</p>
             </Link>
           ))}
         </div>
