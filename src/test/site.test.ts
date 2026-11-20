@@ -170,3 +170,11 @@ describe("Black Friday offer prices", () => {
     expect(offenders).toEqual([]);
   });
 });
+
+describe("Google search verification", () => {
+  it("serves the google-site-verification meta tag with a code from the root head", () => {
+    const root = readFileSync("src/routes/__root.tsx", "utf8");
+    const match = root.match(/name: "google-site-verification", content: "([^"]+)"/);
+    expect(match?.[1]?.length).toBeGreaterThan(0);
+  });
+});
