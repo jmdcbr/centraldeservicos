@@ -93,7 +93,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Manutenção residencial e comercial em Recife e RMR." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "google-site-verification", content: "SEU_CODIGO_AQUI" },
+      { name: "google-site-verification", content: "NA5V1Lzhe4cWzL74rsl00OoVm6sT6gEvme810jT7Dg8" },
     ],
     links: [
       {
