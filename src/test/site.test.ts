@@ -38,6 +38,12 @@ describe("Service catalog", () => {
     expect(vidracaria?.title).toBe("Vidraçaria");
     expect(vidracaria?.items).toContain("Box de banheiro");
   });
+
+  it("no longer offers furniture assembly anywhere on the site", () => {
+    expect(SERVICES.some((s) => s.slug === "montagem")).toBe(false);
+    const offenders = siteSourceFiles().filter((f) => /montagem/i.test(readFileSync(f, "utf8")));
+    expect(offenders).toEqual([]);
+  });
 });
 
 describe("Clients served", () => {

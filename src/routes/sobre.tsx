@@ -47,7 +47,7 @@ function SobrePage() {
           </p>
           <p className="mt-4 text-muted-foreground">
             Atendemos {SEGMENTS_LABEL} em Recife e Região Metropolitana: elétrica, hidráulica,
-            ar-condicionado, vidraçaria, pintura, reformas, montagem de móveis e pequenos reparos —
+            ar-condicionado, vidraçaria, pintura, reformas e pequenos reparos —
             com atendimento rápido, preço justo e serviço garantido.
           </p>
         </div>

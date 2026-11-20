@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura, reformas e montagem de móveis em Recife e Região Metropolitana. Atendemos residências, empresas e condomínios. Peça seu orçamento pelo WhatsApp.",
+          "Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura, reformas e pequenos reparos em Recife e Região Metropolitana. Atendemos residências, empresas e condomínios. Peça seu orçamento pelo WhatsApp.",
       },
       { property: "og:title", content: "Central de Serviços | Manutenção residencial em Recife" },
       {
@@ -57,8 +57,8 @@ function Index() {
               Sua casa ou empresa <span className="text-highlight">em boas mãos</span>
             </h1>
             <p className="mt-6 max-w-lg text-lg text-primary-foreground/80">
-              Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura, reformas e montagem de
-              móveis. Um só contato para resolver tudo.
+              Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura, reformas e pequenos
+              reparos. Um só contato para resolver tudo.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {SEGMENTS.map((s) => (

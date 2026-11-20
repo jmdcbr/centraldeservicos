@@ -3,7 +3,6 @@ import {
   Building2,
   Car,
   Droplets,
-  Hammer,
   Home,
   MonitorSmartphone,
   PaintRoller,
@@ -120,13 +119,6 @@ export const SERVICES: Service[] = [
     short: "Paredes novas, ambientes renovados e acabamento caprichado.",
     icon: PaintRoller,
     items: ["Pintura interna e externa", "Massa corrida e textura", "Gesso e drywall", "Pequenas obras de alvenaria", "Assentamento de pisos"],
-  },
-  {
-    slug: "montagem",
-    title: "Montagem de móveis",
-    short: "Montagem e desmontagem com cuidado e ferramentas certas.",
-    icon: Hammer,
-    items: ["Guarda-roupas e cômodas", "Painéis de TV", "Camas e berços", "Móveis de escritório", "Desmontagem para mudança"],
   },
   {
     slug: "pequenos-reparos",

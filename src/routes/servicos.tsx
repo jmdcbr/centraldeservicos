@@ -13,7 +13,7 @@ export const Route = createFileRoute("/servicos")({
       {
         name: "description",
         content:
-          "Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura e reformas, montagem de móveis e pequenos reparos em Recife e RMR. Também vendemos ar-condicionado Hiperfrio, linhas Claro e TIM, seguro auto APVS e criativos digitais e sites com a Frame Division.",
+          "Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura, reformas e pequenos reparos em Recife e RMR. Também vendemos ar-condicionado Hiperfrio, linhas Claro e TIM, seguro auto APVS e criativos digitais e sites com a Frame Division.",
       },
       { property: "og:title", content: "Serviços | Central de Serviços Recife" },
       {
