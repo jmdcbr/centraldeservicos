@@ -162,17 +162,21 @@ function Index() {
         </div>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {PRODUCTS.map((p) => (
-            <Link
+            <article
               key={p.slug}
-              {...(p.slug === "venda-ar-condicionado"
-                ? { to: "/black-friday" as const }
-                : { to: "/servicos" as const, hash: p.slug })}
               className="group flex flex-col rounded-2xl border border-border bg-card p-7 shadow-card transition-all hover:-translate-y-1 hover:border-accent"
             >
               {p.partner && <PartnerBadge partner={p.partner} />}
-              <h3 className="mt-5 text-lg font-extrabold text-primary">{p.title}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{p.short}</p>
-            </Link>
+              <Link
+                {...(p.slug === "venda-ar-condicionado"
+                  ? { to: "/black-friday" as const }
+                  : { to: "/servicos" as const, hash: p.slug })}
+                className="mt-5 flex flex-1 flex-col"
+              >
+                <h3 className="text-lg font-extrabold text-primary">{p.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{p.short}</p>
+              </Link>
+            </article>
           ))}
         </div>
       </section>

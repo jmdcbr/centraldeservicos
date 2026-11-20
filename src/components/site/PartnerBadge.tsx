@@ -1,7 +1,8 @@
+import { ArrowRight } from "lucide-react";
 import type { Partner } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-/** Logo da marca com o rótulo "Também oferecemos". */
+/** Logo da marca com o rótulo "Também oferecemos" e, quando houver, o link do site de compras. */
 export function PartnerBadge({ partner, className }: { partner: Partner; className?: string }) {
   return (
     <div className={cn("flex flex-col items-start gap-3", className)}>
@@ -17,6 +18,17 @@ export function PartnerBadge({ partner, className }: { partner: Partner; classNa
           {partner.name} – {partner.offer}
         </span>
       </p>
+      {partner.site && (
+        <a
+          href={partner.site.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-sm font-bold text-accent underline-offset-4 hover:underline"
+        >
+          {partner.site.label}
+          <ArrowRight className="size-4 shrink-0" />
+        </a>
+      )}
     </div>
   );
 }

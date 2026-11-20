@@ -66,11 +66,21 @@ export type Partner = {
   name: string;
   offer: string;
   logo: string;
+  /** Site de compras da marca, quando ela tiver loja própria. */
+  site?: { url: string; label: string };
 };
 
 /** Marcas por trás de cada produto que a Central também oferece. */
 export const PARTNERS = {
-  hiperfrio: { name: "Hiperfrio", offer: "venda de ar-condicionado", logo: hiperfrioLogo.url },
+  hiperfrio: {
+    name: "Hiperfrio",
+    offer: "venda de ar-condicionado",
+    logo: hiperfrioLogo.url,
+    site: {
+      url: "https://www.hiperfrioeletroloja.com.br/",
+      label: "Clique aqui, para entrar no nosso site de compras",
+    },
+  },
   claroTim: { name: "Claro e TIM", offer: "linhas telefônicas", logo: timClaroLogo.url },
   apvs: { name: "APVS", offer: "seguros", logo: apvsLogo.url },
   frameDivision: { name: "Frame Division", offer: "criativos digitais e sites", logo: frameDivisionLogo.url },

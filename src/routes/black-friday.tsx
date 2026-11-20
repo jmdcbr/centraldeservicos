@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Banknote, CreditCard, Snowflake, Wrench } from "lucide-react";
+import { ArrowRight, Banknote, CreditCard, Snowflake, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { AC_OFFERS, BUSINESS, PARTNERS, PROMO, whatsappLink } from "@/lib/site";
@@ -49,15 +49,26 @@ function BlackFridayPage() {
               <Wrench className="size-4 text-accent" /> Instalação com a nossa equipe
             </span>
           </div>
-          <div className="mt-8 inline-flex items-center gap-4 rounded-2xl bg-primary-foreground/10 p-3 pr-5">
-            <img
-              src={PARTNERS.hiperfrio.logo}
-              alt={`Logo ${PARTNERS.hiperfrio.name}`}
-              className="h-12 w-auto max-w-[16rem] rounded-lg object-contain"
-            />
-            <span className="text-sm font-semibold text-primary-foreground/85">
-              Também oferecemos: venda de ar-condicionado com a {PARTNERS.hiperfrio.name}
-            </span>
+          <div className="mt-8 inline-flex flex-col items-start gap-3 rounded-2xl bg-primary-foreground/10 p-4 pr-6">
+            <div className="flex items-center gap-4">
+              <img
+                src={PARTNERS.hiperfrio.logo}
+                alt={`Logo ${PARTNERS.hiperfrio.name}`}
+                className="h-12 w-auto max-w-[16rem] rounded-lg object-contain"
+              />
+              <span className="text-sm font-semibold text-primary-foreground/85">
+                Também oferecemos: venda de ar-condicionado com a {PARTNERS.hiperfrio.name}
+              </span>
+            </div>
+            <a
+              href={PARTNERS.hiperfrio.site.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-base font-bold text-primary-foreground underline decoration-accent decoration-2 underline-offset-4 hover:text-accent"
+            >
+              {PARTNERS.hiperfrio.site.label}
+              <ArrowRight className="size-4 shrink-0" />
+            </a>
           </div>
         </div>
       </section>

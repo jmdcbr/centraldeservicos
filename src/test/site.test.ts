@@ -77,6 +77,13 @@ describe("Products sold", () => {
     expect(PRODUCTS.find((p) => p.slug === "seguro-automotivo-apvs")?.title).toBe("Seguro automotivo APVS");
   });
 
+  it("links the Hiperfrio badge to the Hiperfrio online store", () => {
+    expect(PARTNERS.hiperfrio.site).toEqual({
+      url: "https://www.hiperfrioeletroloja.com.br/",
+      label: "Clique aqui, para entrar no nosso site de compras",
+    });
+  });
+
   it("labels each brand with what it offers instead of a partnership wording", () => {
     expect(PARTNERS.apvs.offer).toBe("seguros");
     expect(PARTNERS.claroTim.offer).toBe("linhas telefônicas");
