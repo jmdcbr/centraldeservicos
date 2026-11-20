@@ -64,15 +64,16 @@ export const SEGMENTS_LABEL = "residências, empresas e condomínios";
 
 export type Partner = {
   name: string;
+  offer: string;
   logo: string;
 };
 
-/** Empresas parceiras por trás de cada produto vendido. */
+/** Marcas por trás de cada produto que a Central também oferece. */
 export const PARTNERS = {
-  hiperfrio: { name: "Hiperfrio", logo: hiperfrioLogo.url },
-  claroTim: { name: "Claro e TIM", logo: timClaroLogo.url },
-  apvs: { name: "APVS", logo: apvsLogo.url },
-  frameDivision: { name: "Frame Division", logo: frameDivisionLogo.url },
+  hiperfrio: { name: "Hiperfrio", offer: "venda de ar-condicionado", logo: hiperfrioLogo.url },
+  claroTim: { name: "Claro e TIM", offer: "linhas telefônicas", logo: timClaroLogo.url },
+  apvs: { name: "APVS", offer: "seguros", logo: apvsLogo.url },
+  frameDivision: { name: "Frame Division", offer: "criativos digitais e sites", logo: frameDivisionLogo.url },
 } satisfies Record<string, Partner>;
 
 export type Service = {

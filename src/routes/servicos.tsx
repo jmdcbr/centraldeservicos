@@ -13,7 +13,7 @@ export const Route = createFileRoute("/servicos")({
       {
         name: "description",
         content:
-          "Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura, reformas e pequenos reparos em Recife e RMR. Também vendemos ar-condicionado Hiperfrio, linhas Claro e TIM, seguro auto APVS e criativos digitais e sites com a Frame Division.",
+          "Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura, reformas e pequenos reparos em Recife e RMR. Também oferecemos ar-condicionado Hiperfrio, linhas Claro e TIM, seguro auto APVS e criativos digitais e sites com a Frame Division.",
       },
       { property: "og:title", content: "Serviços | Central de Serviços Recife" },
       {
@@ -83,9 +83,9 @@ function ServicosPage() {
       <section className="bg-secondary/60 py-16">
         <div className="mx-auto max-w-6xl px-5">
           <div className="roof-mark">
-            <h2 className="text-display text-4xl text-primary md:text-5xl">Também vendemos</h2>
+            <h2 className="text-display text-4xl text-primary md:text-5xl">Também oferecemos</h2>
             <p className="mt-3 max-w-md text-muted-foreground">
-              Além da manutenção, trabalhamos com parceiros de confiança para cuidar da sua casa, empresa, carro e da divulgação do seu negócio.
+              Além da manutenção, também oferecemos produtos e serviços de marcas de confiança para cuidar da sua casa, empresa, carro e da divulgação do seu negócio.
             </p>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

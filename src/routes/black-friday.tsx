@@ -56,7 +56,7 @@ function BlackFridayPage() {
               className="h-12 w-auto max-w-[16rem] rounded-lg object-contain"
             />
             <span className="text-sm font-semibold text-primary-foreground/85">
-              Venda em parceria com a {PARTNERS.hiperfrio.name}
+              Também oferecemos: venda de ar-condicionado com a {PARTNERS.hiperfrio.name}
             </span>
           </div>
         </div>

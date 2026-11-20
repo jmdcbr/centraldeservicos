@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { AC_OFFERS, BUSINESS, PRODUCTS, PROMO, SEGMENTS, SERVICES, whatsappLink } from "@/lib/site";
+import { AC_OFFERS, BUSINESS, PARTNERS, PRODUCTS, PROMO, SEGMENTS, SERVICES, whatsappLink } from "@/lib/site";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -75,6 +75,16 @@ describe("Products sold", () => {
 
   it("sells APVS car insurance", () => {
     expect(PRODUCTS.find((p) => p.slug === "seguro-automotivo-apvs")?.title).toBe("Seguro automotivo APVS");
+  });
+
+  it("labels each brand with what it offers instead of a partnership wording", () => {
+    expect(PARTNERS.apvs.offer).toBe("seguros");
+    expect(PARTNERS.claroTim.offer).toBe("linhas telefônicas");
+    expect(PARTNERS.hiperfrio.offer).toBe("venda de ar-condicionado");
+    expect(PARTNERS.frameDivision.offer).toBe("criativos digitais e sites");
+    expect(readFileSync("src/components/site/PartnerBadge.tsx", "utf8")).toContain("Também oferecemos");
+    const offenders = siteSourceFiles().filter((f) => /parceria|parceiros|parceiras/i.test(readFileSync(f, "utf8")));
+    expect(offenders).toEqual([]);
   });
 
   it("sells air conditioners with eight Black Friday offers", () => {

@@ -28,7 +28,7 @@ export function SiteFooter() {
               </li>
             ))}
           </ul>
-          <h3 className="mt-8 text-sm font-bold uppercase tracking-widest text-primary-foreground/60">Também vendemos</h3>
+          <h3 className="mt-8 text-sm font-bold uppercase tracking-widest text-primary-foreground/60">Também oferecemos</h3>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
               <Link to="/black-friday" className="font-bold text-accent hover:text-primary-foreground">

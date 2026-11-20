@@ -155,10 +155,10 @@ function Index() {
         </div>
       </section>
 
-      {/* Também vendemos */}
+      {/* Também oferecemos */}
       <section className="mx-auto max-w-6xl px-5 pb-20">
         <div className="roof-mark">
-          <h2 className="text-display text-4xl text-primary md:text-5xl">Também vendemos</h2>
+          <h2 className="text-display text-4xl text-primary md:text-5xl">Também oferecemos</h2>
         </div>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {PRODUCTS.map((p) => (

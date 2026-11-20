@@ -1,7 +1,7 @@
 import type { Partner } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-/** Logo do parceiro com o rótulo "Em parceria com". */
+/** Logo da marca com o rótulo "Também oferecemos". */
 export function PartnerBadge({ partner, className }: { partner: Partner; className?: string }) {
   return (
     <div className={cn("flex flex-col items-start gap-3", className)}>
@@ -12,8 +12,10 @@ export function PartnerBadge({ partner, className }: { partner: Partner; classNa
         loading="lazy"
       />
       <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-        Em parceria com
-        <span className="ml-1 text-sm normal-case tracking-normal text-primary">{partner.name}</span>
+        Também oferecemos
+        <span className="mt-1 block text-sm normal-case tracking-normal text-primary">
+          {partner.name} – {partner.offer}
+        </span>
       </p>
     </div>
   );
