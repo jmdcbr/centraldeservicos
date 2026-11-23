@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { AC_OFFERS, BUSINESS, PARTNERS, PRODUCTS, PROMO, SEGMENTS, SERVICES, whatsappLink } from "@/lib/site";
+import { AC_OFFERS, BUSINESS, CLIENTS, PARTNERS, PRODUCTS, PROMO, SEGMENTS, SERVICES, whatsappLink } from "@/lib/site";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -52,6 +52,37 @@ describe("Clients served", () => {
     expect(titles).toContain("Empresas");
     expect(titles).toContain("Condomínios");
     expect(titles).toContain("Residências");
+  });
+});
+
+describe("Clients already served", () => {
+  it("shows exactly the seven clients the business named", () => {
+    expect(CLIENTS.map((c) => c.name)).toEqual([
+      "Condomínio Residencial Janga Prince",
+      "Condomínio Residencial Quinta das Brisas",
+      "Condomínio Residencial Vila das Palmeiras",
+      "Renault Regence",
+      "Art Pedras",
+      "Posto e Loja de Conveniência Maria Farinha",
+      "Pousada Mar a Velas",
+    ]);
+  });
+
+  it("labels each client with its kind", () => {
+    expect(CLIENTS.map((c) => c.kind)).toEqual([
+      "Condomínio residencial",
+      "Condomínio residencial",
+      "Condomínio residencial",
+      "Empresa",
+      "Empresa",
+      "Posto e loja de conveniência",
+      "Pousada",
+    ]);
+  });
+
+  it("shows the client list on the home page and on the about page", () => {
+    expect(readFileSync("src/routes/index.tsx", "utf8")).toContain("CLIENTS");
+    expect(readFileSync("src/routes/sobre.tsx", "utf8")).toContain("CLIENTS");
   });
 });
 

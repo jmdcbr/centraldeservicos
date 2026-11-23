@@ -3,12 +3,15 @@ import {
   Building2,
   Car,
   Droplets,
+  Gem,
   Home,
+  Hotel,
   MonitorSmartphone,
   PaintRoller,
   ShoppingBag,
   Smartphone,
   Snowflake,
+  Store,
   Users,
   Wrench,
   Zap,
@@ -61,6 +64,24 @@ export const SEGMENTS: Segment[] = [
 
 /** Sentence-ready label for copy: "residências, empresas e condomínios". */
 export const SEGMENTS_LABEL = "residências, empresas e condomínios";
+
+export type Client = {
+  name: string;
+  /** Tipo do cliente, para o rótulo do card: "Condomínio residencial", "Pousada"... */
+  kind: string;
+  icon: LucideIcon;
+};
+
+/** Clientes que já atendemos: condomínios, empresas e estabelecimentos. */
+export const CLIENTS: Client[] = [
+  { name: "Condomínio Residencial Janga Prince", kind: "Condomínio residencial", icon: Building2 },
+  { name: "Condomínio Residencial Quinta das Brisas", kind: "Condomínio residencial", icon: Building2 },
+  { name: "Condomínio Residencial Vila das Palmeiras", kind: "Condomínio residencial", icon: Building2 },
+  { name: "Renault Regence", kind: "Empresa", icon: Car },
+  { name: "Art Pedras", kind: "Empresa", icon: Gem },
+  { name: "Posto e Loja de Conveniência Maria Farinha", kind: "Posto e loja de conveniência", icon: Store },
+  { name: "Pousada Mar a Velas", kind: "Pousada", icon: Hotel },
+];
 
 export type Partner = {
   name: string;

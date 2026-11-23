@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { CtaBand } from "@/components/site/CtaBand";
 import { PartnerBadge } from "@/components/site/PartnerBadge";
-import { BUSINESS, PRODUCTS, SEGMENTS, SEGMENTS_LABEL, SERVICES, whatsappLink } from "@/lib/site";
+import { BUSINESS, CLIENTS, PRODUCTS, SEGMENTS, SEGMENTS_LABEL, SERVICES, whatsappLink } from "@/lib/site";
 import hero from "@/assets/hero-tecnico.jpg";
 
 export const Route = createFileRoute("/")({
@@ -236,6 +236,49 @@ function Index() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Clientes que já atendemos */}
+      <section className="mx-auto max-w-6xl px-5 py-20">
+        <div className="roof-mark">
+          <h2 className="text-display text-4xl text-primary md:text-5xl">
+            Quem <span className="text-highlight">já confia</span> na Central
+          </h2>
+          <p className="mt-3 max-w-md text-muted-foreground">
+            Condomínios, empresas e estabelecimentos que já atendemos em {BUSINESS.region}.
+          </p>
+        </div>
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {CLIENTS.map((c) => (
+            <li
+              key={c.name}
+              className="flex items-center gap-4 rounded-2xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-highlight"
+            >
+              <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-secondary text-highlight">
+                <c.icon className="size-6" />
+              </span>
+              <span>
+                <span className="block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                  {c.kind}
+                </span>
+                <span className="text-lg font-extrabold text-primary">{c.name}</span>
+              </span>
+            </li>
+          ))}
+          <li className="flex items-center gap-4 rounded-2xl bg-primary p-6 text-primary-foreground shadow-card sm:col-span-2">
+            <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-accent text-accent-foreground">
+              <ArrowRight className="size-6" />
+            </span>
+            <span>
+              <span className="block text-xs font-semibold uppercase tracking-widest text-accent">
+                Sua empresa pode ser a próxima
+              </span>
+              <Link to="/contato" className="text-lg font-extrabold hover:text-highlight">
+                Falar com a gente
+              </Link>
+            </span>
+          </li>
+        </ul>
       </section>
 
       <CtaBand />
