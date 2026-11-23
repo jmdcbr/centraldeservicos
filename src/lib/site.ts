@@ -4,6 +4,8 @@ import {
   Car,
   Droplets,
   Gem,
+  Hammer,
+  HardHat,
   Home,
   Hotel,
   MonitorSmartphone,
