@@ -142,9 +142,9 @@ export const SERVICES: Service[] = [
   {
     slug: "energia-solar",
     title: "Energia solar",
-    short: "Economia na conta de luz com um sistema solar bem dimensionado.",
+    short: "Instalação, limpeza e regularização do seu sistema solar.",
     icon: Sun,
-    items: ["Venda e instalação de kits", "Dimensionamento do sistema", "Limpeza e manutenção dos painéis", "Regularização e documentação", "Para casas, empresas e condomínios"],
+    items: ["Montagem do sistema que você já comprou", "Instalação de placas e estrutura", "Limpeza dos painéis", "Revisão e manutenção do sistema", "Regularização e documentação com a distribuidora"],
   },
   {
     slug: "vidracaria",

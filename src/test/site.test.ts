@@ -43,11 +43,11 @@ describe("Service catalog", () => {
     const solar = SERVICES.find((s) => s.slug === "energia-solar");
     expect(solar?.title).toBe("Energia solar");
     expect(solar?.items).toEqual([
-      "Venda e instalação de kits",
-      "Dimensionamento do sistema",
-      "Limpeza e manutenção dos painéis",
-      "Regularização e documentação",
-      "Para casas, empresas e condomínios",
+      "Montagem do sistema que você já comprou",
+      "Instalação de placas e estrutura",
+      "Limpeza dos painéis",
+      "Revisão e manutenção do sistema",
+      "Regularização e documentação com a distribuidora",
     ]);
   });
 
@@ -59,7 +59,10 @@ describe("Service catalog", () => {
 
   it("no longer offers furniture assembly anywhere on the site", () => {
     expect(SERVICES.some((s) => s.slug === "montagem")).toBe(false);
-    const offenders = siteSourceFiles().filter((f) => /montagem/i.test(readFileSync(f, "utf8")));
+    // "montagem" is allowed for other services (e.g. energia solar) — only furniture assembly is off-limits.
+    const offenders = siteSourceFiles().filter((f) =>
+      /montagem\s+de\s+m[óo]veis/i.test(readFileSync(f, "utf8")),
+    );
     expect(offenders).toEqual([]);
   });
 });
