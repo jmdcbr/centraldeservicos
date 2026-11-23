@@ -39,6 +39,24 @@ describe("Service catalog", () => {
     expect(vidracaria?.items).toContain("Box de banheiro");
   });
 
+  it("offers energia solar among the services", () => {
+    const solar = SERVICES.find((s) => s.slug === "energia-solar");
+    expect(solar?.title).toBe("Energia solar");
+    expect(solar?.items).toEqual([
+      "Venda e instalação de kits",
+      "Dimensionamento do sistema",
+      "Limpeza e manutenção dos painéis",
+      "Regularização e documentação",
+      "Para casas, empresas e condomínios",
+    ]);
+  });
+
+  it("mentions energia solar in the home and services copy", () => {
+    expect(readFileSync("src/routes/index.tsx", "utf8")).toContain("energia solar");
+    expect(readFileSync("src/routes/servicos.tsx", "utf8")).toContain("energia solar");
+    expect(readFileSync("src/routes/sobre.tsx", "utf8")).toContain("energia solar");
+  });
+
   it("no longer offers furniture assembly anywhere on the site", () => {
     expect(SERVICES.some((s) => s.slug === "montagem")).toBe(false);
     const offenders = siteSourceFiles().filter((f) => /montagem/i.test(readFileSync(f, "utf8")));
@@ -87,10 +105,16 @@ describe("Clients already served", () => {
 });
 
 describe("Products sold", () => {
-  it("sells Claro and TIM phone lines", () => {
+  it("sells TIM, Vivo and Claro phone lines", () => {
     const lines = PRODUCTS.find((p) => p.slug === "linhas-telefonicas");
-    expect(lines?.title).toBe("Linhas telefônicas Claro e TIM");
-    expect(lines?.partner?.name).toBe("Claro e TIM");
+    expect(lines?.title).toBe("Linhas telefônicas TIM, Vivo e Claro");
+    expect(lines?.partner?.name).toBe("TIM, Vivo e Claro");
+    expect(lines?.items?.[0]).toBe("Linhas TIM, Vivo e Claro");
+  });
+
+  it("never names Oi as an operator anywhere on the site", () => {
+    const offenders = siteSourceFiles().filter((f) => /\bOi\b/.test(readFileSync(f, "utf8")));
+    expect(offenders).toEqual([]);
   });
 
   it("sells digital creatives and web development with Frame Division", () => {
@@ -117,7 +141,7 @@ describe("Products sold", () => {
 
   it("labels each brand with what it offers instead of a partnership wording", () => {
     expect(PARTNERS.apvs.offer).toBe("seguros");
-    expect(PARTNERS.claroTim.offer).toBe("linhas telefônicas");
+    expect(PARTNERS.timVivoClaro.offer).toBe("linhas telefônicas");
     expect(PARTNERS.hiperfrio.offer).toBe("venda de ar-condicionado");
     expect(PARTNERS.frameDivision.offer).toBe("criativos digitais e sites");
     expect(readFileSync("src/components/site/PartnerBadge.tsx", "utf8")).toContain("Também oferecemos");

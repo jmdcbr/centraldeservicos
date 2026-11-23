@@ -87,7 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Central de Serviços | Manutenção residencial em Recife" },
       {
         name: "description",
-        content: "Elétrica, hidráulica, ar-condicionado, vidraçaria, pintura e reformas em Recife e RMR.",
+        content: "Elétrica, hidráulica, ar-condicionado, energia solar, vidraçaria, pintura e reformas em Recife e RMR.",
       },
       { property: "og:title", content: "Central de Serviços" },
       { property: "og:description", content: "Manutenção residencial e comercial em Recife e RMR." },

@@ -12,6 +12,7 @@ import {
   Smartphone,
   Snowflake,
   Store,
+  Sun,
   Users,
   Wrench,
   Zap,
@@ -102,7 +103,7 @@ export const PARTNERS = {
       label: "Clique aqui, para entrar no nosso site de compras",
     },
   },
-  claroTim: { name: "Claro e TIM", offer: "linhas telefônicas", logo: timClaroLogo.url },
+  timVivoClaro: { name: "TIM, Vivo e Claro", offer: "linhas telefônicas", logo: timClaroLogo.url },
   apvs: { name: "APVS", offer: "seguros", logo: apvsLogo.url },
   frameDivision: { name: "Frame Division", offer: "criativos digitais e sites", logo: frameDivisionLogo.url },
 } satisfies Record<string, Partner>;
@@ -137,6 +138,13 @@ export const SERVICES: Service[] = [
     short: "Instalação, limpeza e manutenção para o seu ar gelar de verdade.",
     icon: Snowflake,
     items: ["Instalação de split", "Limpeza e higienização", "Recarga de gás", "Manutenção preventiva", "Desinstalação e mudança"],
+  },
+  {
+    slug: "energia-solar",
+    title: "Energia solar",
+    short: "Economia na conta de luz com um sistema solar bem dimensionado.",
+    icon: Sun,
+    items: ["Venda e instalação de kits", "Dimensionamento do sistema", "Limpeza e manutenção dos painéis", "Regularização e documentação", "Para casas, empresas e condomínios"],
   },
   {
     slug: "vidracaria",
@@ -273,11 +281,11 @@ export const PRODUCTS: Service[] = [
   },
   {
     slug: "linhas-telefonicas",
-    title: "Linhas telefônicas Claro e TIM",
-    short: "Linhas e planos Claro e TIM para você, sua família ou sua empresa.",
+    title: "Linhas telefônicas TIM, Vivo e Claro",
+    short: "Linhas e planos TIM, Vivo e Claro para você, sua família ou sua empresa.",
     icon: Smartphone,
-    items: ["Linhas Claro e TIM", "Planos pré e pós-pago", "Planos para empresas", "Portabilidade do seu número"],
-    partner: PARTNERS.claroTim,
+    items: ["Linhas TIM, Vivo e Claro", "Planos pré e pós-pago", "Planos para empresas", "Portabilidade do seu número"],
+    partner: PARTNERS.timVivoClaro,
   },
   {
     slug: "seguro-automotivo-apvs",
